@@ -1,0 +1,4 @@
+<trigger keyword="@string/app_launch_voice_trigger">
+    <!--<input prompt="@string/app_launch_voice_prompt"/>-->
+    <!-- <constraints camera="true" network="true" microphone="true" /> -->
+</trigger>

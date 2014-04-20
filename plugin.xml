@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://cordova.apache.org/ns/plugins/1.0"
+        id="com.rossgerbasi.cordova.plugins.glass"
+        version="0.0.1">
+
+    <name>Glass</name>
+
+    <keywords>cordova,google glass,glass,android</keywords>
+
+    <description>
+        Plugin to add Google Glass Support to your Cordova Android Application.
+    </description>
+
+    <license>MIT</license>
+
+    <author>Ross Gerbasi</author>
+
+    <engines>
+        <engine name="cordova" version=">=3.0"/>
+    </engines>
+
+    <js-module src="www/rossgerbasi-glass.js" name="Glass">
+        <clobbers target="rossgerbasi.glass"/>
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/widget">
+            <preference name="fullscreen" value="true"/>
+            <feature name="Glass">
+                <param name="android-package" value="com.rossgerbasi.cordova.plugins.glass.Glass"/>
+                <param name="onload" value="true"/>
+            </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <activity
+                    android:name="com.rossgerbasi.cordova.plugins.glass.GoogleGlassActivity"
+                    android:finishOnTaskLaunch="true"
+                    android:launchMode="singleInstance"
+                    android:noHistory="true"
+                    android:theme="@style/GlassTheme">
+                <intent-filter>
+                    <action android:name="com.google.android.glass.action.VOICE_TRIGGER"/>
+                </intent-filter>
+                <meta-data
+                    android:name="com.google.android.glass.VoiceTrigger"
+                    android:resource="@xml/app_launch_voice_trigger"/>
+            </activity>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.INTERNET"/>
+            <uses-permission android:name="com.google.android.glass.permission.DEVELOPMENT" />
+            <uses-library android:name="com.google.android.glass" android:required="true"/>
+        </config-file>
+
+        <source-file src="res/xml/app_launch_voice_trigger.xml" 
+                     target-dir="res/xml"/>
+
+        <source-file src="res/values/styles.xml"
+                     target-dir="res/values"/>
+        
+        <source-file src="res/values/glass.xml"
+                     target-dir="res/values"/>                
+
+        <source-file src="src/com/rossgerbasi/cordova/plugins/glass/Glass.java"
+                     target-dir="src/com/rossgerbasi/cordova/plugins/glass"/>
+    
+        <source-file src="src/com/rossgerbasi/cordova/plugins/glass/GlassGestureManager.java"
+                     target-dir="src/com/rossgerbasi/cordova/plugins/glass"/>
+
+        <source-file src="src/com/rossgerbasi/cordova/plugins/glass/GlassMotionEventManager.java"
+                     target-dir="src/com/rossgerbasi/cordova/plugins/glass"/>
+
+        <source-file src="src/com/rossgerbasi/cordova/plugins/glass/GlassTouchManager.java"
+                     target-dir="src/com/rossgerbasi/cordova/plugins/glass"/>
+        
+        <source-file src="src/com/rossgerbasi/cordova/plugins/glass/GoogleGlassActivity.java"
+                     target-dir="src/com/rossgerbasi/cordova/plugins/glass"/>
+
+        <source-file src="libs/gdk.jar"
+                     target-dir="libs"/>
+    </platform>
+</plugin>

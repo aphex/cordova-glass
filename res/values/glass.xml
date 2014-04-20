@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_launch_voice_trigger">hello cordova</string>
+    <string name="app_launch_voice_prompt">prompt question</string>
+</resources>
