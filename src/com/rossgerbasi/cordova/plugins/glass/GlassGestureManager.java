@@ -2,17 +2,17 @@ package com.rossgerbasi.cordova.plugins.glass;
 
 import android.util.Log;
 import android.view.MotionEvent;
-import android.webkit.WebView;
 import com.google.android.glass.touchpad.Gesture;
 import com.google.android.glass.touchpad.GestureDetector;
+import org.apache.cordova.CordovaWebView;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class GlassGestureManager extends GlassMotionEventManager implements GestureDetector.BaseListener, GestureDetector.FingerListener, GestureDetector.ScrollListener, GestureDetector.TwoFingerScrollListener{
     private final GestureDetector mGestureDetector;
 
-    public GlassGestureManager(WebView webview) {
-        super(webview);
+    public GlassGestureManager(CordovaWebView webView) {
+        super(webView);
         mGestureDetector = new GestureDetector(this.webView.getContext());
         mGestureDetector.setBaseListener(this);
         mGestureDetector.setFingerListener(this);

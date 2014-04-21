@@ -2,11 +2,11 @@ package com.rossgerbasi.cordova.plugins.glass;
 
 import android.view.InputDevice;
 import android.view.MotionEvent;
-import android.webkit.WebView;
+import org.apache.cordova.CordovaWebView;
 
 public class GlassTouchManager extends GlassMotionEventManager {
-    public GlassTouchManager(WebView webview) {
-        super(webview);
+    public GlassTouchManager(CordovaWebView webView) {
+        super(webView);
     }
 
     public void process(MotionEvent event) {
