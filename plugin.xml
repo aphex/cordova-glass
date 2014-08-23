@@ -2,7 +2,7 @@
 
 <plugin xmlns="http://cordova.apache.org/ns/plugins/1.0"
         id="com.rossgerbasi.cordova.plugins.glass"
-        version="0.0.1">
+        version="1.0.0">
 
     <name>Glass</name>
 
@@ -80,7 +80,11 @@
         <source-file src="src/com/rossgerbasi/cordova/plugins/glass/GoogleGlassActivity.java"
                      target-dir="src/com/rossgerbasi/cordova/plugins/glass"/>
 
-        <source-file src="libs/gdk.jar"
-                     target-dir="libs"/>
+        <!-- 
+            ant.properties is loaded prior to project properties and does not exist in default cordova android projects 
+            so we will hijack that for setting the proper SDK for Google Glass
+        -->
+        <resource-file src="resources/ant.properties"
+                     target=""/>
     </platform>
 </plugin>
